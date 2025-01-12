@@ -1,0 +1,174 @@
+/* General body styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding-top: 60px;
+}
+
+/* Header styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+header:hover {
+  background-color: #444;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Resort Name */
+.resort-name {
+  display: block;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.resort-name:hover {
+  transform: translateY(-5px);
+  color: #f7b42c;
+}
+
+/* Navigation Menu */
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #f7b42c;
+  transform: translateY(-3px);
+}
+
+nav ul li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #f7b42c;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+nav ul li:hover::after {
+  width: 100%;
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 21px;
+  justify-content: space-between;
+}
+
+.hamburger .line {
+  height: 4px;
+  background-color: white;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Toggle Hamburger Icon when active */
+.hamburger.active .line:nth-child(1) {
+  transform: rotate(45deg);
+  top: 6px;
+}
+
+.hamburger.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 6px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  /* For small devices like tablets and mobile phones */
+  header {
+    padding: 15px 20px;
+  }
+
+  .resort-name {
+    font-size: 22px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  nav ul.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+  }
+
+  nav ul.open li {
+    margin: 10px 0;
+  }
+
+  nav ul.open li a {
+    padding: 15px;
+  }
+}
