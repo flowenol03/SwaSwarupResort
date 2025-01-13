@@ -66,7 +66,7 @@ const Contact = forwardRef((props, ref) => {
             marginBottom: '20px',
           }}
         >
-          <strong>Phone:</strong> +1 (123) 456-7890
+          <strong>Phone:</strong> +91 9673794227
         </p>
         <p
           style={{
