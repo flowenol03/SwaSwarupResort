@@ -45,7 +45,7 @@ const About = forwardRef((props, ref) => {
       <div className="about-overlay">
         <h2>About Us</h2>
         <p>
-          Welcome to SwaSwarup Resort – Where Luxury Meets Tranquility
+          Welcome to SwarSwarup Resort – Where Luxury Meets Tranquility
         </p>
         <p>
           Nestled amidst serene landscapes and designed to redefine opulence,

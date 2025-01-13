@@ -56,7 +56,7 @@ const Contact = forwardRef((props, ref) => {
               textDecoration: 'none',
             }}
           >
-            swaswarupresort@gmail.com
+            swarswarupresort@gmail.com
           </a>
         </p>
         <p
@@ -74,7 +74,7 @@ const Contact = forwardRef((props, ref) => {
             color: '#fff',
           }}
         >
-          <strong>Address:</strong> SwaSwarupResort, Anuskura.
+          <strong>Address:</strong> SwarSwarupResort, Anuskura.
         </p>
       </div>
 

@@ -22,7 +22,7 @@ const Header = ({
     <header>
       <div className="container">
         {/* Resort Name */}
-        <div className="resort-name">SwaSwarup Resort</div>
+        <div className="resort-name">SwarSwarup Resort</div>
 
         {/* Navigation Menu */}
         <nav>
