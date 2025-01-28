@@ -34,7 +34,10 @@ const App = () => {
     cvv: ''
   });
 
-  const [qrCodeScreenshot, setQrCodeScreenshot] = useState(null); // State for the screenshot
+  const [qrCodeScreenshot, setQrCodeScreenshot] = useState(null);
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
 
   const scrollToSection = (sectionRef) => {
     if (sectionRef.current) {
@@ -42,7 +45,6 @@ const App = () => {
     }
   };
 
-  // Validate form before opening payment modal
   const validateForm = () => {
     const { name, phoneNumber, numberOfPersons, numberOfRooms, stayDurationStart, stayDurationEnd } = formData;
     if (
@@ -54,9 +56,9 @@ const App = () => {
       stayDurationEnd
     ) {
       setFormValid(true);
-      setIsPaymentOpen(true); // Open the payment modal if the form is valid
+      setIsPaymentOpen(true);
     } else {
-      setFormValid(false); // Set form as invalid if any field is missing
+      setFormValid(false);
     }
   };
 
@@ -68,7 +70,6 @@ const App = () => {
     });
   };
 
-  // Handle file upload for QR code screenshot (confirmation)
   const handleQrCodeScreenshotUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -80,7 +81,6 @@ const App = () => {
     }
   };
 
-  // Validate payment form (QR Code or Card)
   const validatePayment = () => {
     if (paymentMethod === 'qr' && !qrCodeScreenshot) {
       alert('Please upload a valid screenshot of the QR code!');
@@ -89,28 +89,41 @@ const App = () => {
 
     if (paymentMethod === 'card') {
       const { cardholderName, cardNumber, expiryDate, cvv } = formData;
-
-      // Validate if all fields are filled
       if (!cardholderName || !cardNumber || !expiryDate || !cvv) {
         alert('Please fill all card details!');
         return false;
       }
-
-      // Example additional validation (e.g., card number length, expiry date format, etc.)
       if (cardNumber.length !== 16) {
         alert('Card number should be 16 digits!');
         return false;
       }
-
       if (cvv.length !== 3) {
         alert('CVV should be 3 digits!');
         return false;
       }
-
-      return true; // If all validations pass
+      return true;
     }
 
-    return true; // For other payment methods (like QR)
+    if (paymentMethod === 'call') {
+      setOtpSent(true);
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleOtpVerification = () => {
+    if (otp === '1234') {
+      setPaymentConfirmed(true);
+    } else {
+      alert('Incorrect OTP. Please try again.');
+    }
+  };
+
+  const resetPaymentSections = () => {
+    setOtpSent(false);
+    setOtp('');
+    setPaymentConfirmed(false);
   };
 
   return (
@@ -200,7 +213,7 @@ const App = () => {
                 className="payment-btn"
                 onClick={() => {
                   if (validateForm()) {
-                    validatePayment(); // Validate payment before opening the modal
+                    validatePayment();
                   }
                 }}
               >
@@ -225,26 +238,37 @@ const App = () => {
             <div className="payment-options">
               <button
                 className={`payment-btn ${paymentMethod === 'qr' ? 'active' : ''}`}
-                onClick={() => setPaymentMethod('qr')}
+                onClick={() => {
+                  setPaymentMethod('qr');
+                  resetPaymentSections(); // Reset payment sections when changing method
+                }}
               >
                 Pay via QR Code
               </button>
               <button
                 className={`payment-btn ${paymentMethod === 'card' ? 'active' : ''}`}
-                onClick={() => setPaymentMethod('card')}
+                onClick={() => {
+                  setPaymentMethod('card');
+                  resetPaymentSections();
+                }}
               >
                 Pay via Card
+              </button>
+              <button
+                className={`payment-btn ${paymentMethod === 'call' ? 'active' : ''}`}
+                onClick={() => {
+                  setPaymentMethod('call');
+                  resetPaymentSections();
+                }}
+              >
+                Pay via Call
               </button>
             </div>
 
             {paymentMethod === 'qr' && (
               <div className="qr-section fade-in">
                 <p>Scan the QR Code to proceed with payment:</p>
-
-                {/* Display your own QR code image here */}
                 <img src="path/to/your-qr-code-image.png" alt="QR Code" style={{ width: 200, height: 200 }} />
-
-                {/* Screenshot upload */}
                 <p>Upload a screenshot of the scanned QR code for confirmation:</p>
                 <input type="file" accept="image/*" onChange={handleQrCodeScreenshotUpload} />
                 {qrCodeScreenshot && <img src={qrCodeScreenshot} alt="Scanned QR Screenshot" style={{ width: 200, height: 200 }} />}
@@ -304,7 +328,64 @@ const App = () => {
               </div>
             )}
 
-            <button className="close-btn" onClick={() => setIsPaymentOpen(false)}>X</button>
+            {paymentMethod === 'call' && !otpSent && (
+              <div className="call-section fade-in">
+                <p>Enter your phone number to receive an OTP:</p>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Enter phone number"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className="payment-btn"
+                  onClick={() => setOtpSent(true)}
+                >
+                  Send OTP
+                </button>
+              </div>
+            )}
+
+            {otpSent && (
+              <div className="otp-section fade-in">
+                <p>Enter the OTP sent to your phone:</p>
+                <input
+                  type="text"
+                  name="otp"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  maxLength="4"
+                  required
+                />
+                <button
+                  type="button"
+                  className="confirm-btn"
+                  onClick={handleOtpVerification}
+                >
+                  Verify OTP
+                </button>
+              </div>
+            )}
+
+            {paymentConfirmed && (
+              <div className="confirmation-message fade-in">
+                <p>Hello {formData.name}, we got your request for booking. Our team will contact you shortly.</p>
+              </div>
+            )}
+
+            <button
+              className="close-btn"
+              onClick={() => {
+                setIsPaymentOpen(false);
+                setIsModalOpen(false);
+                setPaymentConfirmed(false);
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
