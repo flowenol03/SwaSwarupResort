@@ -73,6 +73,21 @@ const Menu = forwardRef((props, ref) => {
           </div>
         ))}
       </div>
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .category {
+              width: 70% !important; /* Increase width for smaller screens */
+            }
+          }
+
+          @media (max-width: 480px) {
+            .category {
+              width: 70% !important; /* Even larger width for very small screens */
+            }
+          }
+        `}
+      </style>
     </section>
   );
 });

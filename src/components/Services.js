@@ -18,6 +18,22 @@ const servicesData = [
 const Services = forwardRef((props, ref) => {
   return (
     <section id="services" ref={ref} style={{ backgroundColor: '#f8f8f8', padding: '60px 20px', color: '#333', textAlign: 'center' }}>
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .service-item {
+              width: 70% !important;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .service-item {
+              width: 80% !important;
+            }
+          }
+        `}
+      </style>
+
       <h2 style={{ fontSize: '3rem', fontFamily: 'Garamond, serif', color: '#FFD700', marginBottom: '30px' }}>
         Our Exclusive Services
       </h2>
