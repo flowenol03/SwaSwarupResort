@@ -114,14 +114,14 @@ header nav ul li:hover::after {
 @media (max-width: 768px) {
   header {
     flex-direction: column; /* Stack header items vertically */
-    padding: 80px 20px; /* Increase the padding for more height */
+    padding: 120px 20px; /* Increase the padding for more height */
   }
 
   .resort-name {
     position: relative;
     left: 0; /* Center the resort name for small screens */
     margin-right: 0; /* Remove margin */
-    font-size: 24px; /* Reduce font size on smaller screens */
+    font-size: 28px; /* Reduce font size on smaller screens */
   }
 
   header nav ul {
@@ -143,11 +143,11 @@ header nav ul li:hover::after {
 
 @media (max-width: 480px) {
   header {
-    padding: 80px 20px; /* Increase padding even more for smaller screens */
+    padding: 120px 20px; /* Increase padding even more for smaller screens */
   }
 
   .resort-name {
-    font-size: 20px; /* Further reduce font size */
+    font-size: 28px; /* Further reduce font size */
   }
 }
 /* Hero section */
