@@ -9,6 +9,7 @@ body {
 /* Header styles */
 /* Existing header styles */
 /* Resort header styles */
+/* Resort header styles */
 header {
   position: fixed;
   top: 0;
@@ -117,7 +118,7 @@ header nav ul li:hover::after {
 @media (max-width: 768px) {
   header {
     flex-direction: column; /* Stack header items vertically */
-    padding: 20px 20px; /* Increase the padding for more height */
+    padding: 50px 20px; /* Increase the padding for more height */
   }
 
   .resort-name {
@@ -146,13 +147,14 @@ header nav ul li:hover::after {
 
 @media (max-width: 480px) {
   header {
-    padding: 30px 20px; /* Increase padding for smaller screens */
+    padding: 60px 20px; /* Increase padding even more for smaller screens */
   }
 
   .resort-name {
     font-size: 16px; /* Further reduce font size */
   }
 }
+
 
 
 /* Hero section */
