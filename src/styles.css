@@ -928,3 +928,230 @@ footer {
         height: 220px;  /* Increased height further for mobile */
     }
 }
+/* Luxurious BOOK NOW button */
+.book-now-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #FFD700; /* Pure Gold */
+  color: white;
+  padding: 14px 22px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+  z-index: 1000; /* Ensures it's above the background */
+}
+
+.book-now-btn:hover {
+  background: #FFC700;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.7);
+}
+
+
+/* Luxurious Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Luxurious Glassmorphism Booking Modal */
+.booking-modal {
+  background: rgba(0, 0, 0, 0.8); /* Dark Glass Effect */
+  padding: 25px;
+  width: 400px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.5); /* Gold border */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Input fields with Gold Borders */
+.booking-modal input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid gold;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.booking-modal input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Luxurious Payment Button */
+.payment-btn {
+  background: linear-gradient(45deg, #ffd700, #b8860b);
+  color: black;
+  padding: 12px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.payment-btn:hover {
+  background: linear-gradient(45deg, #b8860b, #ffd700);
+  transform: scale(1.1);
+}
+
+/* Close Button */
+.close-btn {
+  background: #ff4e50;
+  color: white;
+  padding: 8px 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.close-btn:hover {
+  background: #c92b2b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .booking-modal {
+    width: 90%;
+  }
+
+  .book-now-btn {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 18px;
+    font-size: 18px;
+  }
+}
+
+/* Modal Background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+/* Booking Modal */
+.booking-modal,
+.payment-modal {
+  background: #111;
+  color: #FFD700;
+  padding: 25px;
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Payment Options */
+.payment-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.payment-btn {
+  background: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 45%;
+}
+
+.payment-btn:hover, .payment-btn.active {
+  background: #FFD700;
+  color: black;
+}
+
+/* QR Code */
+.qr-section {
+  margin-top: 15px;
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Card Section */
+.card-section label {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.card-section input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #FFD700;
+  color: black;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.confirm-btn:hover {
+  background: #FFC700;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
