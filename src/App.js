@@ -16,7 +16,8 @@ const App = () => {
   const servicesSectionRef = useRef(null);
   const gallerySectionRef = useRef(null);
   const contactSectionRef = useRef(null);
-
+  const [message, setMessage] = useState('');
+  const [confirmationMessage, setConfirmationMessage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -271,14 +272,69 @@ const App = () => {
                 <img src="path/to/your-qr-code-image.png" alt="QR Code" style={{ width: 200, height: 200 }} />
                 <p>Upload a screenshot of the scanned QR code for confirmation:</p>
                 <input type="file" accept="image/*" onChange={handleQrCodeScreenshotUpload} />
-                {qrCodeScreenshot && <img src={qrCodeScreenshot} alt="Scanned QR Screenshot" style={{ width: 200, height: 200 }} />}
+                {qrCodeScreenshot && (
+                  <div className="image-upload-container" style={{ marginTop: '10px' }}>
+                    <img src={qrCodeScreenshot} alt="Scanned QR Screenshot" style={{ width: 200, height: 200 }} />
+                    <div style={{ marginTop: '10px' }}>
+                      <button
+                        className="upload-btn" // Apply the upload button class here
+                        onClick={() => {
+                          // Set the confirmation message
+                          setMessage(`Hello ${formData.name}, we got your request for booking. Our team will contact you shortly.`);
+                        }}
+                      >
+                        Upload
+                      </button>
+                    </div>
+                    {message && <p style={{ marginTop: '10px' }}>{message}</p>} {/* Display the message below the button */}
+                  </div>
+                )}
               </div>
             )}
 
             {paymentMethod === 'card' && (
               <div className="card-section fade-in">
                 <p>Enter your card details:</p>
-                <form>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault(); // Prevent the default form submission
+
+                    // Validation
+                    const { cardholderName, cardNumber, expiryDate, cvv } = formData;
+                    const currentDate = new Date();
+                    const [expiryMonth, expiryYear] = expiryDate.split('/').map(Number);
+                    const expiryFullYear = 2000 + expiryYear; // Assuming YY is in the 2000s
+
+                    // Check if cardholder name is empty or contains invalid characters
+                    if (!cardholderName || !/^[a-zA-Z\s-]+$/.test(cardholderName)) {
+                      alert('Cardholder Name is required and can only contain letters, spaces, and hyphens.');
+                      return;
+                    }
+
+                    // Check if card number is valid
+                    if (!/^\d{16}$/.test(cardNumber)) {
+                      alert('Card Number must be 16 digits.');
+                      return;
+                    }
+
+                    // Check if expiry date is valid
+                    if (!expiryDate.match(/^(0[1-9]|1[0-2])\/\d{2}$/) ||
+                      (expiryFullYear < currentDate.getFullYear() ||
+                        (expiryFullYear === currentDate.getFullYear() && expiryMonth < currentDate.getMonth() + 1))) {
+                      alert('Expiry Date is invalid or has already passed.');
+                      return;
+                    }
+
+                    // Check if CVV is valid
+                    if (!/^\d{3}$/.test(cvv)) {
+                      alert('CVV must be 3 digits.');
+                      return;
+                    }
+
+                    // If all validations pass, set the confirmation message
+                    setConfirmationMessage(`Hello ${formData.name}, we got your request for booking. Our team will contact you shortly.`);
+                  }}
+                >
                   <label>Cardholder Name</label>
                   <input
                     type="text"
@@ -325,6 +381,7 @@ const App = () => {
                   </div>
                   <button type="submit" className="confirm-btn">Confirm Payment</button>
                 </form>
+                {confirmationMessage && <p style={{ marginTop: '10px', textAlign: 'center' }}>{confirmationMessage}</p>} {/* Display the message below the button */}
               </div>
             )}
 
