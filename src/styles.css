@@ -118,14 +118,14 @@ header nav ul li:hover::after {
 @media (max-width: 768px) {
   header {
     flex-direction: column; /* Stack header items vertically */
-    padding: 50px 20px; /* Increase the padding for more height */
+    padding: 80px 20px; /* Increase the padding for a larger header */
   }
 
   .resort-name {
     position: relative;
     left: 0; /* Center the resort name for small screens */
     margin-right: 0; /* Remove margin */
-    font-size: 18px; /* Reduce font size on smaller screens */
+    font-size: 24px; /* Increase font size on tablet screens */
   }
 
   header nav ul {
@@ -133,11 +133,12 @@ header nav ul li:hover::after {
   }
 
   header nav ul li {
-    margin: 5px 0; /* Add space between items */
+    margin: 10px 0; /* Add more space between items */
   }
 
   header nav ul li a {
-    padding: 10px 0;
+    padding: 15px 0; /* Increase padding for navigation links */
+    font-size: 18px; /* Increase font size for navigation links */
   }
 
   .hamburger {
@@ -147,14 +148,166 @@ header nav ul li:hover::after {
 
 @media (max-width: 480px) {
   header {
-    padding: 60px 20px; /* Increase padding even more for smaller screens */
+    padding: 100px 20px; /* Increase padding for smaller screens */
   }
 
   .resort-name {
-    font-size: 16px; /* Further reduce font size */
+    font-size: 28px; /* Further increase font size */
+  }
+
+  header nav ul li a {
+    font-size: 20px; /* Larger font size for mobile */
+  }
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+header:hover {
+  background-color: #444;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Resort Name and navigation styles */
+.resort-name {
+  display: block;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  position: absolute;
+  left: 10%;
+  background-image: url('../public/image/image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.resort-name:hover {
+  color: #f7b42c;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  text-align: center;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #f7b42c;
+  transform: translateY(-3px);
+}
+
+header nav ul li::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #f7b42c;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+header nav ul li:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 21px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hamburger .line {
+  height: 4px;
+  background-color: white;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Stack header items vertically */
+    padding: 120px 20px; /* Increased padding for a much bigger header */
+  }
+
+  .resort-name {
+    position: relative;
+    left: 0; /* Center the resort name for small screens */
+    margin-right: 0; /* Remove margin */
+    font-size: 32px; /* Increase font size even more on tablet screens */
+  }
+
+  header nav ul {
+    flex-direction: column; /* Stack navigation links vertically */
+  }
+
+  header nav ul li {
+    margin: 15px 0; /* More space between items */
+  }
+
+  header nav ul li a {
+    padding: 20px 0; /* Increase padding for navigation links */
+    font-size: 24px; /* Increase font size for navigation links */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger on small screens */
   }
 }
 
+@media (max-width: 480px) {
+  header {
+    padding: 140px 20px; /* Even more padding for smaller screens */
+  }
+
+  .resort-name {
+    font-size: 36px; /* Increase font size for mobile */
+  }
+
+  header nav ul li a {
+    font-size: 28px; /* Larger font size for mobile */
+  }
+}
 
 
 /* Hero section */
