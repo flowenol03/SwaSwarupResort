@@ -7,115 +7,146 @@ body {
 }
 
 /* Header styles */
+/* Existing header styles */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #333;
-    color: white;
-    padding: 10px 20px;
-    z-index: 1000; /* Ensures the header stays on top of other content */
-    box-sizing: border-box; /* Ensures padding is included in width calculation */
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Vertically center content */
-    text-align: center;
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 header:hover {
-    background-color: #444; /* Darken the background color on hover */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-    transform: scale(1.05); /* Slightly enlarge the header on hover */
+  background-color: #444;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
-/* Resort Name in the center for smaller screens */
+/* Resort Name and navigation styles */
 .resort-name {
-    display: block;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-right: 30px; /* Add spacing between name and nav */
-    transition: transform 0.3s ease, color 0.3s ease; /* Add transitions */
-    position: absolute;
-    left: 10%; /* Adjusted to move slightly to the right */
-    background-image: url('../public/image/image.jpg'); /* Add background image */
-    background-size: cover; /* Cover the entire area of the element */
-    background-position: center; /* Position the background image at the center */
-    padding: 10px 20px; /* Add padding to create space around the text */
-    border-radius: 8px; /* Optional: to create rounded corners */
-    cursor: pointer;
+  display: block;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  position: absolute;
+  left: 10%;
+  background-image: url('../public/image/image.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .resort-name:hover {
-    /*transform: translateY(-5px);  Lift the text upwards for a luxurious effect */
-    color: #f7b42c; /* Change color to gold-like shade on hover */
+  color: #f7b42c;
 }
 
-/* Header navigation items */
 header nav ul {
-    display: flex;
-    list-style: none;
-    justify-content: center; /* Center the nav items horizontally */
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 header nav ul li {
-    text-align: center;
+  text-align: center;
 }
 
 header nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: color 0.3s ease, transform 0.3s ease; /* Add transitions */
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 header nav ul li a:hover {
-    color: #f7b42c; /* Change link color to gold on hover */
-    transform: translateY(-3px); /* Lift the link slightly on hover */
+  color: #f7b42c;
+  transform: translateY(-3px);
 }
 
 header nav ul li::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #f7b42c; /* Gold underline effect */
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #f7b42c;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
 
 header nav ul li:hover::after {
-    width: 100%; /* Expand the underline when hovering */
+  width: 100%;
 }
 
-/* For the hamburger menu icon */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    width: 30px;
-    height: 21px;
-    justify-content: space-between;
-    position: relative;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 21px;
+  justify-content: space-between;
+  position: relative;
 }
-
-/*.hamburger:hover {*/
-  /*  transform: rotate(45deg); /* Luxurious effect for hamburger */
-/*}*/
 
 .hamburger .line {
-    height: 4px;
-    background-color: white;
-    border-radius: 4px;
-    width: 100%; /* Ensure full width of the container */
+  height: 4px;
+  background-color: white;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+      flex-direction: column; /* Stack header items vertically */
+      padding: 15px;
+  }
+
+  .resort-name {
+      position: relative;
+      left: 0; /* Center the resort name for small screens */
+      margin-right: 0; /* Remove margin */
+      font-size: 18px; /* Reduce font size on smaller screens */
+  }
+
+  header nav ul {
+      flex-direction: column; /* Stack navigation links vertically */
+  }
+
+  header nav ul li {
+      margin: 5px 0; /* Add space between items */
+  }
+
+  header nav ul li a {
+      padding: 10px 0;
+  }
+
+  .hamburger {
+      display: flex; /* Show hamburger on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .resort-name {
+      font-size: 16px; /* Further reduce font size */
+  }
 }
 
 /* Hero section */
@@ -500,405 +531,551 @@ footer {
     }
 }
 
+/* General Styles */
+/* General Styles */
 #menu {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-  
-  #menu h2 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  #menu p {
-    font-size: 1.1rem;
-    color: #777;
-  }
-  
-  .menu-categories {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-  
-  .category {
-    width: 30%;
-    background-color: #fff;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .category h3 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .menu-item {
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-  }
-  
-  .menu-item img {
-    width: 80px;
-    height: 80px;
-    margin-right: 20px;
-    border-radius: 5px;
-  }
-  
-  .item-details h4 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .item-details p {
-    color: #777;
-    font-size: 1rem;
-  }
-  
-  .price {
-    font-weight: bold;
-    color: #e91e63;
-    font-size: 1.1rem;
-  }
-  /* menu.css */
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#menu h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+#menu p {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.menu-categories {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.category {
+  width: 30%;
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.menu-item {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.menu-item img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.item-details h4 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.item-details p {
+  color: #777;
+  font-size: 1rem;
+}
+
+.price {
+  font-weight: bold;
+  color: #e91e63;
+  font-size: 1.1rem;
+}
+
+/* menu.css */
 
 /* General Styles */
 .menu-container {
-    background-color: #1d1d1d;
+  background-color: #1d1d1d;
+  padding: 60px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.menu-header {
+  font-size: 3rem;
+  font-family: 'Garamond', serif;
+  color: #FFD700;
+  margin-bottom: 30px;
+}
+
+.menu-description {
+  font-size: 1.25rem;
+  font-family: 'Georgia', serif;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.menu-categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.category {
+  width: 30%;
+  margin: 20px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.category-title {
+  font-size: 2rem;
+  font-family: 'Garamond', serif;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  transform: scale(1.03);
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.item-details {
+  text-align: left;
+}
+
+.item-name {
+  font-size: 1.5rem;
+  font-family: 'Georgia', serif;
+  color: #FFD700;
+}
+
+.item-description {
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.item-price {
+  font-size: 1.2rem;
+  font-family: 'Georgia', serif;
+  color: #FFD700;
+}
+
+/* Media Queries for responsiveness */
+
+/* For large screens (desktops and above) */
+@media (min-width: 1200px) {
+  .menu-container {
     padding: 60px 20px;
-    color: #fff;
-    text-align: center;
   }
-  
+
   .menu-header {
     font-size: 3rem;
-    font-family: 'Garamond', serif;
-    color: #FFD700;
-    margin-bottom: 30px;
   }
-  
+
   .menu-description {
     font-size: 1.25rem;
-    font-family: 'Georgia', serif;
-    color: #fff;
-    margin-bottom: 50px;
   }
-  
+
   .menu-categories {
-    display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap;
   }
-  
+
   .category {
     width: 30%;
     margin: 20px;
-    background-color: #333;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
-  
-  .category:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
-  }
-  
+
   .category-title {
     font-size: 2rem;
-    font-family: 'Garamond', serif;
-    color: #FFD700;
-    margin-bottom: 20px;
   }
-  
+
   .menu-item {
-    display: flex;
-    margin-bottom: 20px;
+    flex-direction: row;
     align-items: center;
-    transition: transform 0.3s ease-in-out;
   }
-  
-  .menu-item:hover {
-    transform: scale(1.03);
-  }
-  
+
   .item-image {
     width: 80px;
     height: 80px;
-    border-radius: 5px;
     margin-right: 20px;
   }
-  
-  .item-details {
-    text-align: left;
-  }
-  
+
   .item-name {
     font-size: 1.5rem;
-    font-family: 'Georgia', serif;
-    color: #FFD700;
   }
-  
-  .item-description {
-    font-size: 1rem;
-    font-family: 'Georgia', serif;
-    color: #bbb;
-    margin-bottom: 10px;
-  }
-  
+
   .item-price {
     font-size: 1.2rem;
-    font-family: 'Georgia', serif;
-    color: #FFD700;
   }
-  
-  /* Media Queries for responsiveness */
-  
-  /* For tablets and smaller screens */
-  @media (max-width: 768px) {
-    .menu-container {
-      padding: 50px 15px;
-    }
-  
-    .menu-header {
-      font-size: 2.5rem;
-    }
-  
-    .menu-description {
-      font-size: 1.1rem;
-    }
-  
-    .menu-categories {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .category {
-      width: 80%; /* Make categories take up more space on smaller screens */
-      margin-bottom: 30px;
-      padding: 25px;
-    }
-  
-    .category-title {
-      font-size: 1.75rem;
-    }
-  
-    .menu-item {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .item-image {
-      width: 100px;
-      height: 100px;
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
-  
-    .item-name {
-      font-size: 1.25rem;
-    }
-  
-    .item-price {
-      font-size: 1.1rem;
-    }
-  }
-  
-  /* For mobile phones */
-  @media (max-width: 480px) {
-    .menu-container {
-      padding: 40px 10px;
-    }
-  
-    .menu-header {
-      font-size: 2rem;
-    }
-  
-    .menu-description {
-      font-size: 1rem;
-    }
-  
-    .menu-categories {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .category {
-      width: 90%; /* Full width for better visibility on small screens */
-      margin-bottom: 20px;
-      padding: 20px;
-    }
-  
-    .category-title {
-      font-size: 1.5rem;
-    }
-  
-    .menu-item {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .item-image {
-      width: 100px;
-      height: 100px;
-      margin-right: 0;
-      margin-bottom: 15px;
-    }
-  
-    .item-name {
-      font-size: 1.2rem;
-    }
-  
-    .item-price {
-      font-size: 1.05rem;
-    }
-  }
-  
+}
 
-  /* services.css */
+/* For tablets (small screens, less than 1200px) */
+@media (max-width: 1024px) {
+  .menu-container {
+    padding: 50px 15px;
+  }
+
+  .menu-header {
+    font-size: 2.75rem;
+  }
+
+  .menu-description {
+    font-size: 1.1rem;
+  }
+
+  .menu-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 25px;
+  }
+
+  .category-title {
+    font-size: 1.75rem;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .item-name {
+    font-size: 1.25rem;
+  }
+
+  .item-price {
+    font-size: 1.1rem;
+  }
+}
+
+/* For small tablets (less than 768px) */
+@media (max-width: 768px) {
+  .menu-container {
+    padding: 50px 15px;
+  }
+
+  .menu-header {
+    font-size: 2.5rem;
+  }
+
+  .menu-description {
+    font-size: 1.1rem;
+  }
+
+  .menu-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 25px;
+  }
+
+  .category-title {
+    font-size: 1.75rem;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .item-name {
+    font-size: 1.25rem;
+  }
+
+  .item-price {
+    font-size: 1.1rem;
+  }
+}
+
+/* For mobile phones (less than 480px) */
+@media (max-width: 480px) {
+  .menu-container {
+    padding: 40px 10px;
+  }
+
+  .menu-header {
+    font-size: 2rem;
+  }
+
+  .menu-description {
+    font-size: 1rem;
+  }
+
+  .menu-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category {
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .item-name {
+    font-size: 1.2rem;
+  }
+
+  .item-price {
+    font-size: 1.05rem;
+  }
+}
 
 /* services.css */
 
+/* General Styles */
 #services {
-    background-color: #f8f8f8;
+  background-color: #f8f8f8;
+  padding: 60px 20px;
+  color: #333;
+  text-align: center;
+}
+
+#services h2 {
+  font-size: 3rem;
+  font-family: 'Garamond', serif;
+  color: #FFD700;
+  margin-bottom: 30px;
+}
+
+#services p {
+  font-size: 1.25rem;
+  font-family: 'Georgia', serif;
+  color: #333;
+  margin-bottom: 50px;
+}
+
+.services-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-item {
+  width: 45%;
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.service-item h3 {
+  font-size: 2rem;
+  font-family: 'Garamond', serif;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.service-item p {
+  font-size: 1.1rem;
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+.service-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Media Queries for responsiveness */
+
+/* For large screens (desktops and above) */
+@media (min-width: 1200px) {
+  #services {
     padding: 60px 20px;
-    color: #333;
-    text-align: center;
   }
-  
+
   #services h2 {
     font-size: 3rem;
-    font-family: 'Garamond', serif;
-    color: #FFD700;
-    margin-bottom: 30px;
   }
-  
+
   #services p {
     font-size: 1.25rem;
-    font-family: 'Georgia', serif;
-    color: #333;
-    margin-bottom: 50px;
   }
-  
+
   .services-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: row;
   }
-  
+
   .service-item {
     width: 45%;
     margin-bottom: 40px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
-  
-  .service-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
+
   .service-item h3 {
     font-size: 2rem;
-    font-family: 'Garamond', serif;
-    color: #FFD700;
+  }
+}
+
+/* For tablets (small screens, less than 1200px) */
+@media (max-width: 1024px) {
+  #services {
+    padding: 50px 15px;
+  }
+
+  #services h2 {
+    font-size: 2.75rem;
+  }
+
+  #services p {
+    font-size: 1.1rem;
+  }
+
+  .services-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .service-item h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* For small tablets (less than 768px) */
+@media (max-width: 768px) {
+  #services {
+    padding: 50px 15px;
+  }
+
+  #services h2 {
+    font-size: 2.5rem;
+  }
+
+  #services p {
+    font-size: 1.1rem;
+  }
+
+  .services-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .service-item h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* For mobile phones (less than 480px) */
+@media (max-width: 480px) {
+  #services {
+    padding: 40px 10px;
+  }
+
+  #services h2 {
+    font-size: 2rem;
+  }
+
+  #services p {
+    font-size: 1rem;
+  }
+
+  .services-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 90%;
     margin-bottom: 20px;
   }
-  
-  .service-item p {
-    font-size: 1.1rem;
-    font-family: 'Georgia', serif;
-    color: #555;
-    line-height: 1.5;
+
+  .service-item h3 {
+    font-size: 1.5rem;
   }
-  
-  .service-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Media Queries for responsiveness */
-  
-  /* For tablets and smaller screens */
-  @media (max-width: 768px) {
-    #services {
-      padding: 50px 15px;
-    }
-  
-    #services h2 {
-      font-size: 2.5rem;
-    }
-  
-    #services p {
-      font-size: 1.1rem;
-    }
-  
-    .services-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .service-item {
-      width: 80%; /* Make the service items take more space on smaller screens */
-      margin-bottom: 30px;
-      padding: 25px;
-    }
-  
-    .service-item h3 {
-      font-size: 1.75rem;
-    }
-  
-    .service-item p {
-      font-size: 1rem;
-    }
-  }
-  
-  /* For mobile phones */
-  @media (max-width: 480px) {
-    #services {
-      padding: 40px 10px;
-    }
-  
-    #services h2 {
-      font-size: 2rem;
-    }
-  
-    #services p {
-      font-size: 1rem;
-    }
-  
-    .services-list {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .service-item {
-      width: 90%; /* Full width on mobile for better visibility */
-      margin-bottom: 20px;
-      padding: 20px;
-    }
-  
-    .service-item h3 {
-      font-size: 1.5rem;
-    }
-  
-    .service-item p {
-      font-size: 0.95rem;
-    }
-  }
-  
+}
+
+
   /* Apply hover effects on gallery images */
   .gallery-item:hover {
     transform: scale(1.05);
